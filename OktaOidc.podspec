@@ -1,15 +1,15 @@
 Pod::Spec.new do |s|
-  s.name             = 's37OktaOidc'
+  s.name             = 'OktaOidc'
   s.version          = '3.11.2'
   s.summary          = 'SDK to easily integrate AppAuth with Okta'
   s.description      = <<-DESC
 Integrate your native app with Okta using the AppAuth library.
                        DESC
   s.platforms    = { :ios => "11.0", :osx => "10.10"}
-  s.homepage         = 'https://github.com/Science37/okta-oidc-ios'
+  s.homepage         = 'https://github.com/okta/okta-oidc-ios'
   s.license          = { :type => 'APACHE2', :file => 'LICENSE' }
-  s.authors          = { "S37 & Okta Developers" => "developer@okta.com"}
-  s.source           = { :git => 'https://github.com/Science37/okta-oidc-ios.git', :tag => s.version.to_s }
+  s.authors          = { "Okta Developers" => "developer@okta.com"}
+  s.source           = { :git => 'https://github.com/okta/okta-oidc-ios.git', :tag => s.version.to_s }
   s.swift_version = '5.0'
 
   s.subspec 'AppAuth' do |appauth|
