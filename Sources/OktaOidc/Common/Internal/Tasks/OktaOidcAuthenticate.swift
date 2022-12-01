@@ -19,6 +19,7 @@ import OktaOidc_AppAuth
 class OktaOidcAuthenticateTask: OktaOidcTask {
     
     func authenticateWithSessionToken(sessionToken: String,
+                                      additionalParams: [String: String],
                                       delegate: OktaNetworkRequestCustomizationDelegate? = nil,
                                       validator: OKTTokenValidator,
                                       callback: @escaping (OKTAuthState?, OktaOidcError?) -> Void) {
@@ -33,6 +34,7 @@ class OktaOidcAuthenticateTask: OktaOidcTask {
             let state = OKTAuthorizationRequest.generateState()
             var additionalParameters = self.config.additionalParams ?? [String: String]()
             additionalParameters["sessionToken"] = sessionToken
+            additionalParameters.merge(additionalParams) { (current, _) in current }
             
             let request = OKTAuthorizationRequest(
                 configuration: oidConfig,

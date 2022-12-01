@@ -30,6 +30,7 @@ public class OktaOidc: NSObject {
     }
 
     @objc public func authenticate(withSessionToken sessionToken: String,
+                                   additionalParams: [String: String],
                                    callback: @escaping ((OktaOidcStateManager?, Error?) -> Void)) {
         let oktaAPI = OktaOidcRestApi()
         oktaAPI.requestCustomizationDelegate = configuration.requestCustomizationDelegate
@@ -37,6 +38,7 @@ public class OktaOidc: NSObject {
         let task = OktaOidcAuthenticateTask(config: configuration, oktaAPI: oktaAPI)
         task.authenticateWithSessionToken(
             sessionToken: sessionToken,
+            additionalParams: additionalParams,
             delegate: configuration.requestCustomizationDelegate,
             validator: configuration.tokenValidator,
             callback: { (authState, error) in
